@@ -1,4 +1,6 @@
-# Given an array, find the maximum sum of any subarray of size k. // This function uses the 'sliding window' computational technique. Time complexity is O(N). Space complexity is O(1).
+# Given an array and a positive number K, find the maximum sum of any subarray of size K. // 
+# This function uses the 'sliding window' computational technique. The window size is added until it reaches size K. After that, the first element is cut off. 
+# Time complexity is O(N). Space complexity is O(1).
 def main():
     k = 2
     arr = [2, 3, 4, 1, 5]
