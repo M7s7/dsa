@@ -1,4 +1,3 @@
 # Data Structures and Algorithms Practice
-## Grokking the Coding Interview
-### Sliding window problems
+## Grokking the Coding Interview exercises
 
