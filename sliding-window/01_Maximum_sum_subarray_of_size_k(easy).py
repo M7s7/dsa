@@ -6,6 +6,7 @@ def main():
     arr = [2, 3, 4, 1, 5]
     print(max_sub_array_of_size_k(k, arr))
 
+
 def max_sub_array_of_size_k(k, arr):
     # Initialise a running total for the window and max score
     windowSum, maxSum = 0, 0
@@ -20,5 +21,6 @@ def max_sub_array_of_size_k(k, arr):
         # Making sure to store the largest windowSum in max, and return it to main. 
         maxSum = max(maxSum, windowSum)
     return maxSum
+
 
 main()

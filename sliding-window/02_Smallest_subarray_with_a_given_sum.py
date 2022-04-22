@@ -1,5 +1,6 @@
 # Given an array and a positive number S, find the length of the smallest contiguous subarray whose sum is greater than or equal to S. Return 0 if no such subarray exists. 
 # This function uses the 'sliding window' computational technique. Initialising windowStart at index zero, dynamically slide the windowEnd until the subarray >= S. Once this is found, the windowStart and check if this subarray > S. If it does, this is the minimum size at this array[windowStart + 1]. If not, slide the windowEnd until the subarray >=S. Continue until windowEnd is the array length. 
+# Time complexity is O(N) (technically O(N+N) because of the while loop). Space complexity is O(1). 
 def main():
     arr = [2, 1, 5, 2, 8]
     s = 7
