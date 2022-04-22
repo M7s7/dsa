@@ -1,7 +1,7 @@
 # Given a string and a positive number k, find the longest substring with, AT MOST, k distinct characters.   
 # This problem uses a dynamic window to constantly slide the windowEnd, checking for the condition. Once the condition is found, the first element is cut and windowStart moves up a place, checking the conditional again (with the while loop). 
 # Compared to 02, the trick in this problem is using a HASHMAP to track the conditional. 
-# Time complexity is O(N) (technically O(N+N) because of the inner while-loop). Space complexity is O(K) (as the dictionary can only hold K variables maximum)
+# Time complexity is O(N) (technically O(N+N) because of the inner while-loop). Space complexity is O(K + 1) (as the dictionary can only hold K + 1 variables before an element is removed)
 
 def main():
     string = "cbbebi"
