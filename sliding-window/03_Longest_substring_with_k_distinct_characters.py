@@ -22,14 +22,14 @@ def longest_substring_with_k_distinct(str, k):
             # Otherwise, add one more to the frequency of the character
         else: freq[str[windowEnd]] += 1
 
-        # While loop to check if k has been surpassed (If it hasn't been surpassed, you can pass it on to the max_length function)
+        # While loop to check if k has been surpassed (If it hasn't been surpassed, you can pass it on to the max_length function). if k has been surpassed, we will be shrinking the table by removing the leftmost element and rechecking the loop. 
         while len(freq) > k: 
-            # For the first character of the substring, remove
+            # For the first character of the substring, remove a frequency from the dictionary
             freq[str[windowStart]] -= 1
-            # Remove the variable from the hashmap if it is 0
+            # Remove the variable from the hashmap if value = 0 (means that it no longer appears in the subwindow)
             if freq[str[windowStart]] == 0:
                 del freq[str[windowStart]]
-            # Move windowStart up one, just in case that k > 3
+            # Move windowStart up one, shrinking the window. Then check the conditional again with the while loop
             windowStart += 1
 
         # The max length is either the current window OR previous max_length
