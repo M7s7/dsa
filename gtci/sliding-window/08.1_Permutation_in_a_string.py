@@ -1,4 +1,4 @@
-# Given a string and a pattern, find out if the string contains any permutation of the pattern.
+# Given a string and a pattern, find out if the string contains any permutation of the pattern, and print True if true. 
 # Static window slides out to len(pattern). Hash table stores frequency of characters of pattern and changes depending on the characters in the window. Matching variable confirms that each unique character has been completely found in the window. 
 # Time complexity is O(N + M) (two loops iterating through len of string (N) and pattern (M)). Space complexity is O(M) (storage of M items in chars dict)
 
