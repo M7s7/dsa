@@ -8,9 +8,9 @@ def main():
     print(find_substring(string, pattern))
 
 def find_substring(str, pattern):
-    # Initalise variables
+    # Initalise variables - sub_start is the starting index of the shortest valid window
     windowStart, matching, min_length, sub_start = 0, 0, len(str) + 1, len(str) + 1
-    # Create hashmap with pattern characters
+    # Create hashmap with pattern characters, recording frequency
     chars = {}
     for char in pattern:
         if char not in chars:
@@ -25,9 +25,9 @@ def find_substring(str, pattern):
             if chars[str[windowEnd]] == 0:
                 matching += 1
     
-        # Check condition - see if we can shrink the window because we are matched
+        # Check condition and shrink window as much as possible until substring is no longer there
         while matching >= len(chars):
-            # Record the index of the shortest substring if the minimum length is reached
+            # Record the index of the shortest substring if a new minimum length is reached
             if min_length > windowEnd - windowStart + 1:
                 sub_start = windowStart
                 min_length = windowEnd - windowStart + 1
