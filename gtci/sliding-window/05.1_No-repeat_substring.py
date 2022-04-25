@@ -3,7 +3,7 @@
 # If a duplicate is found, the window is shrunk until the duplication is gone (and windowStart is stored). The substring length can be calculated using the start and end of the window. 
 # Time complexity is O(N) (as each element is only touched once). Space complexity is O(min(m, n)) where n is the string length and m is size 26 (the alphabet). 
 def main():
-    string = "abcdefabst"
+    string = "abba"
     print(non_repeat_substring(string))
 
 
@@ -17,7 +17,7 @@ def non_repeat_substring(str):
         # Check if new character is in the hashmap (aka check if condition is breached)
         if str[windowEnd] in location:
             # If not a unique character, then move location just beyond the index of the first instance of the character
-            windowStart = location[str[windowEnd]] + 1
+            windowStart = max(location[str[windowEnd]] + 1, windowStart)
             
         # Update the location of the variable in the hashmap (if character is unique, this just creates a new entry in the hashmap)
         location[str[windowEnd]] = windowEnd
