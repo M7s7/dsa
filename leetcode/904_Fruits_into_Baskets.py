@@ -1,7 +1,7 @@
 # Basically, find the longest substring of k distinct characters where k = 2. 
 # Time complexity is O(N); Space complexity is O(1)
 
-def totalFruit(self, fruits: List[int]) -> int:
+def totalFruit(fruits):
     # Initiate variables - i is the index for left most element
     maxFruits, i = 0, 0
     
