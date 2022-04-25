@@ -1,7 +1,7 @@
 # Given a 1-indexed array of sorted numbers and a target sum, find a pair in the array whose sum is equal to the given target. Return the indices.
 # Time complexity: O(N) // Space complexity: O(1)
 
-def twoSum(numbers, target)
+def twoSum(numbers, target):
     # Create left and right pointers
     left = 0
     right = len(numbers) - 1
