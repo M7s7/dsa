@@ -2,36 +2,62 @@
 # INCOMPLETE - TOO DIFFICULT AT THIS TIME TO DO
 
 def main():
-
+    string = "wordgoodgoodgoodbestword"
+    words = ["word","good","best","word"]
+    print(find_word_concatenation(string, words))
 
 def find_word_concatenation(str, words):
-    # Store indices found in a list
-    index = []
-
-    # Create hashmap to store how many times a word appears in the string
-    word_freq = {}
+    # Variables
+    word_length = len(words[0])
+    starting_indices = []
+    i = 0
+    match = 0
+    # Create hashmap of frequency of the words
+    freq = {}
     for word in words:
-        if word not in word_freq:
-            word_freq[word] = 1
-        else: word_freq[word] += 1
-    
-    # Store variables
-    word_count = len(word_freq)
-    word_length = len(word[0]) # words are of the same length so any word will do
-    
-    # Increment windowStart and slowly close the window. windowStart only has to travel to len(str) - the length of a possible concatenated string (as there has to be enough array space for the right side of the window to fit the concatenated string)
-    for windowStart in range((len(str) - word_count * word_length) + 1):
-        # Create a hashmap to count how many words have been seen and refresh it every time the window shrinks
-        words_seen = {}
-        # Move the right side of the window (relative to windowStart) and check for words
-        for windowExtend in range(0, word_count):
-            next_word_index = windowStart + windowExtend * word_length
-            
-            word = str[next_word_index: next_word_index + word_length]
-            if word not in word_freq:
-                break
+        if word not in freq:
+            freq[word] = 1
+        else: freq[word] += 1
+    # Create a copy if a reset is needed
+    duplicate_freq = freq
 
-        if word not in words_seen:
-            words_seen[word] = 0
-        words_seen[word] += 1
+    # Initialise window, incrementing range by word length until the end, starting window at the last letter of the first word
+    for j in range(0, len(str), word_length):
+        # Temp variable for current string
+        substring = str[j: j + word_length]
+
+        # If word is found in hashmap, decrement hashmap
+        if substring in freq:
+            freq[substring] -= 1
+            if freq[substring] == 0:
+                match += 1
+            # Move substring if freq is too negative
+            while freq[substring] < 0:
+                if str[i: i + word_length] == substring:
+                    freq[str[i: i + word_length]] += 1
+                    if freq[str[i: i + word_length]] > 0:
+                        match += 1
+                i += word_length
+                    
+
+        print(match)
+
+        # If there is a word not found in the hashmap, we have to reset the entire thing.
+        if substring not in freq: 
+            match == 0
+            # Reset the hashtable
+            freq = duplicate_freq
+            # Move i up the hashtable
+            i = j + word_length     
+
+        # If match is found, append it to the list of starting indices.
+        if match == len(freq):
+            starting_indices.append(i)
+            # Then, to prepare for the next one, remove the first element and add it back to the hashtable. Also, remove a matching
+            freq[str[i: i + word_length]] += 1
+            match -= 1
+            i += word_length
+    return starting_indices
+
+
 main()
