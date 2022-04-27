@@ -1,4 +1,6 @@
 # Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a backspace character. Note that after backspacing an empty text, the text will continue empty.
+
+# METHOD 1 (OPTIMAL): Two pointers 
 # Surprisingly difficult question. Optimal solution uses two pointers initiated from the back, which jump to the next valid characters after backspaces have been accounted for. 
 # Thus, a valid_char function has been added to take care of the backspaces, incrementing the indices past '#' and past characters when there is a backlog of backspaces built up. 
 # Since each valid character is compared contemporaneously, the strings are only valid if they increment to s_p = t_p = -1 (as index 0 is the last character to compare). Anything else and we should return false.
@@ -57,3 +59,24 @@ def valid_char(string, index):
         index -= 1
     # Return the index of the next valid character
     return index
+
+
+# METHOD 2: STACKS TO BUILD STRINGS
+# We can use a function to build the strings, imitating the keystrokes as we go through the use of a stack. 
+
+def backspaceCompare(self, s: str, t: str) -> bool:
+    # Create function to make a string of valid characters
+    def build_string(string):
+        # This list will be used as a stack (LIFO) - appropriate because backspace removes the elements put in LAST.
+        valid = []
+        # Iterate through the string
+        for char in string: 
+            # If the character is an actual character, we put it on the stack
+            if char != "#":
+                valid.append(char)
+            # If it is a backspace AND the list is not empty (elif valid returns false if valid is empty), then pop off the char
+            elif valid:
+                valid.pop()
+        return str(valid)
+    # Compare strings for bool value
+    return build_string(s) == build_string(t)
