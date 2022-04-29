@@ -11,8 +11,7 @@ def longestOnes(self, nums: List[int], k: int) -> int:
     maxOnes = 0
     
     # Iterate through numbers array
-    for right in range(len(nums)):
-        
+    for right in range(len(nums)):       
         # Add new element to windowSum
         windowSum += nums[right]
         
@@ -20,8 +19,7 @@ def longestOnes(self, nums: List[int], k: int) -> int:
         while windowSum + k < right - left + 1:
             # Note, this could be replaced by saying (if nums[left] = 1: windowSum -= 1).
             windowSum -= nums[left]
-            left += 1
-        
+            left += 1 
         # No need for else condition because of reason below:
         # After the while loop, the window is 1) either valid or 2) there was no valid window (meaning the left pointer is len(nums + 1). Thus, maxOnes remains, correctly, at 0. 
         maxOnes = max(maxOnes, right - left + 1)
@@ -37,7 +35,6 @@ def longestOnes(self, nums: List[int], k: int) -> int:
 
     # Iterate through numbers array
     for right in range(len(nums)):
-
         # Add new element to windowSum
         windowSum += nums[right]
 
@@ -46,5 +43,4 @@ def longestOnes(self, nums: List[int], k: int) -> int:
             if nums[left] == 1:
                 windowSum -= 1
             left += 1
-
     return right - left + 1
