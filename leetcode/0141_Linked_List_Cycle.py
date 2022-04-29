@@ -7,6 +7,7 @@
 #         self.val = x
 #         self.next = None
 
+# We can use FLOYD's CYCLE DETECTION ALGORITHM
 # Initiate two pointers as NODES. One will be fast (going through two nodes each loop) and one will be slow (going through one node each loop)
 # If there is an ending to the linked-list, then the while loop will terminate and we will return False.
 # Else, the loop will iterate until fast and slow converge. Once the fast pointer cycles behind the slow pointer in the list, they will ALWAYS touch. 
@@ -28,4 +29,25 @@ def hasCycle(self, head):
             return True
     # Loop is broken, meaning that the end was reached and there were no cycles - return False
     return False
-        
+    
+# Alternate, less efficient solution:
+# Iterate one pointer through the node list. Have a hashtable storing every visited NODE (not value of node, but the node object itself). Check if the current node is in the hash table - if so, there is a cycle. 
+# Time complexity is O(N), space complexity is O(N)
+
+def hasCycle(self, head):
+    # Create a hashtable that flags nodes that we have visited before
+    visited = {}
+
+    # Initiate a pointer (node) that traverses the linked list
+    search = head
+
+    # While loop terminates if the linked-list has no cycles at the end
+    while search is not None and search.next is not None:
+        if search in visited:
+            return True
+        # Mark visited nodes as True
+        visited[search] = True
+        # Move to the next node
+        search = search.next
+    # If loop is broken, it means that there is an ending of the linked-list
+    return False
