@@ -11,7 +11,6 @@
 # Initiate two pointers as NODES. One will be fast (going through two nodes each loop) and one will be slow (going through one node each loop)
 # If there is an ending to the linked-list, then the while loop will terminate and we will return False.
 # Else, the loop will iterate until fast and slow converge. Once the fast pointer cycles behind the slow pointer in the list, they will ALWAYS touch. 
-## Remember, the fast pointer does not SKIP nodes. It simply visits TWO nodes every loop. 
 # Time complexity is O(N) where N is the number of nodes in the list. Space complexity is O(1).
 
 def hasCycle(self, head):
