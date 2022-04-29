@@ -1,7 +1,7 @@
 # Given a string S, find the length of the longest substring T that contains at most k distinct characters.
 # Both methods use the same concept - store distinct characters in frequency hashmap. If window is invalid, delete left element and increment hashmap.
 # If an element is deleted to 0 frequency, remove it from the hashmap.
-# BOTH SOLUTIONS: Time complexity: O(N) (N + N technically) // Space complexity: O(min (26, k))
+# BOTH SOLUTIONS: Time complexity: O(N) (N + N technically) // Space complexity: O(1), but technically (min (26, k))
 
 # METHOD 1: WHILE statement for invalid window. Every loop will return a valid window if it exists. Track what the maximum size seen is and return it. 
 # Method 2 is more elegant, but this one is easier to conceptualise. 
