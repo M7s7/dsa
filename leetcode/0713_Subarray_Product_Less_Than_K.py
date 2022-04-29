@@ -4,7 +4,7 @@
 # Once we go over the target, we start popping off elements from the left with a while loop.
 # Time complexity: O(N) (technically N+N because of the left increments at worst case) // Space complexity: O(1)
 
-def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
+def numSubarrayProductLessThanK(self, nums: List[int], k: int):
     # Array is all positive (min 1). There are no solutions when k = 1 or less, as our product has to be smaller than k. Thus:
     if k <= 1:
         return 0

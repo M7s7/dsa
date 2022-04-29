@@ -2,7 +2,7 @@
 # Create a frequency hashmap and iterate over the string until matching == size of hashmap. Make sure to shrink window when it becomes larger than the anagram length.
 # Time complexity: O(N + M) for both strings; Space complexity: O(N + min(26, M))
 
-def findAnagrams(self, s: str, p: str) -> List[int]:
+def findAnagrams(self, s: str, p: str):
     # Create list of answers
     index = []
     # Amount of matching letters

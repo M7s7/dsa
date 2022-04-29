@@ -45,7 +45,7 @@ def fourSum(nums, target):
 
 # METHOD 2 - KSUM: RECURSIVE GENERIC SOLUTION
 # Same as above, but generalised to the point for any size k subarrays. 
-def fourSum(nums, target)
+def fourSum(nums, target):
     # Sort the array first
     nums.sort()
     # Results are list of valid answers, quad is the current 4 pointers
