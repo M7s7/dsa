@@ -4,7 +4,7 @@
 # These methods have: Time complexity: O(N) (N+N because left/right pointers can traverse the array) // Space complexity: O(1)
 
 # METHOD 1: The largest sum of the valid window is also the largest window size. If condition is not met, shrink the left side until the window is valid again. 
-def longestOnes(self, nums: List[int], k: int) -> int:
+def longestOnes(self, nums, k):
     # Variables
     windowSum = 0
     left = 0
@@ -28,7 +28,7 @@ def longestOnes(self, nums: List[int], k: int) -> int:
 # METHOD 2: We can take the approach of never actually shrinking the window. 
 # By changing the 'while' statement into an 'if' statement, the window will never shrink past the size of the last valid window as a new element will be added on the next forloop.
 # Because the window never shrinks past the largest valid solution, the maximum window will be the same as the size of the window at the end of the function. 
-def longestOnes(self, nums: List[int], k: int) -> int:
+def longestOnes(self, nums, k):
     # Variables
     windowSum = 0
     left = 0
