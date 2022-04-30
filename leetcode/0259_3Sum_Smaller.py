@@ -3,7 +3,7 @@
 # This question is similar to ThreeSum target, but the trick is with the counter. Every time a solution is found, we can add all triplets of (nums[i], nums[left], nums[left + 1 to right]) because the array is sorted. 
 # Time complexity is O(N^2) (+ nlogn for sorting) // Space complexity is O(N) for sorting. 
 
-def three_sum_smaller(self, nums: List[int], target: int) -> int:
+def three_sum_smaller(self, nums, target):
     # Sort numbers for two-pointer
     nums.sort()
     # Initiate triplet counter
