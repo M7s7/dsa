@@ -21,5 +21,13 @@ def middleNode(self, head):
         return head
     return slow
 
-# Note: The naive solution is storing each node in an array, then returning the middle element of the array.
+
+# ALTERNATE SOLUTIONS:  
+# The naive, brute force solution is to use a slow pointer to count how many nodes there are.
+# Then, traverse the list 1/2 the distance of the count. 
+# Time complexity is O(N) (plus 1/2N), space complexity is O(1)
+# 
+# Another naive solution is storing each node in an array, then returning the middle element of the array.
 # Time complexity is O(N), space complexity is O(N)
+
+#
