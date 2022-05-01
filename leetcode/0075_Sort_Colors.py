@@ -6,7 +6,7 @@
 # Initialise three pointers - left stores 0s, right stores 2s and index scans the array. 
 # Time complexity is O(N) // Space complexity is O(1)
 
-def sortColors(self, nums: List[int]) -> None:
+def sortColors(self, nums):
     # Initialise pointers. Store zeroes on the left, twos on the right. Index passes through the array.
     left = 0 
     right = len(nums) - 1
@@ -32,7 +32,7 @@ def sortColors(self, nums: List[int]) -> None:
 
 # OPTION 2: BUCKETSORT - store frequency of values and then rebuild the array from the start
 # Quite messy, but it is still Time Complexity of O(N) (albeit with a larger constant, seems like its 4N) // Space complexity is O(1) (as we always only store 3 values in the hashmap)
-def sortColors(self, nums: List[int]) -> None:
+def sortColors(self, nums):
     """
     Do not return anything, modify nums in-place instead.
     """
