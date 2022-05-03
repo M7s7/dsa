@@ -50,6 +50,20 @@ def reorderList(self, head):
         reverse = right_temp
 
 
+### NOTE: Here is a more concise implementation of merging the two lists
+        # Merge the two lists
+        start = head
+        end = previous
+        
+        while start:
+            nxt = start.next
+            start.next = end 
+            start = start.next
+            end = nxt
+
+
+
+
 # METHOD 2: USE AN ARRAY
 # We can use an array to store the actual node objects. We can then point towards these
 # Cannot be bothered coding this part, but it is about O(N) in space and time complexity
