@@ -58,14 +58,12 @@ main()
 class job:
  
     # Constructor of the Job
-    def __init__(self, start,
-                 end, cpu_load):
+    def __init__(self, start, end, cpu_load):
         self.start = start
         self.end = end
         self.cpu_load = cpu_load
  
-    # Operator overloading for the
-    # Object that is Job
+    # lt means 'less than' - thus, this function defines that a class object is sorted as 'less than' by its end values. 
     def __lt__(self, other): #<------------ THIS PART IS ADDED, AND IS NECESSARY. IT ALLOWS US TO SORT THE HEAP BY END VALUES 
         # min heap based on job.end
         return self.end < other.end
