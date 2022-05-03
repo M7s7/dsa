@@ -92,6 +92,5 @@ def find_max_cpu_load(jobs):
         # into min_heap
         heappush(min_heap, j)
         current_cpu_load += j.cpu_load
-        max_cpu_load = max(max_cpu_load,
-                           current_cpu_load)
+        max_cpu_load = max(max_cpu_load, current_cpu_load)
     return max_cpu_load
