@@ -2,7 +2,7 @@
 # In other words, return true if one of s1's permutations is the substring of s2.
 
 # Sliding window: Hashmap approach, storing frequency of pattern. 
-# Time complexity: O(N) // Space complexity: O(N)
+# Time complexity: O(N + M) (both string lengths) // Space complexity: O(min(M, 26))
 def checkInclusion(self, s1, s2):
     # We want a window of the size of the permutation, so get size k
     k = len(s1)
