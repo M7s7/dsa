@@ -1,5 +1,5 @@
-
-
+# Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+# Time complexity: O(N) // Space complexity: O(1)
 
 # 1: CYCLIC SORT: 1 indexed, 0 as a substitute for the missing number. Cyclic sort is one-pass, in-place sorting. 
 # Time complexity: O(N) (total 3N - 1, while loop + swapping (max n - 1) + checking for where zero is)// Space complexity: O(1)
