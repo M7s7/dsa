@@ -38,3 +38,9 @@ def checkInclusion(self, s1, s2):
         if match == len(freq):
             return True   
     return False
+
+## Note: there are other approaches:
+    # Brute force (checking every permutation), sorting both strings then comparing, making hashmaps/arrays for equality
+    # Another unwieldy way is to make 2 hashmaps for both strings, storing frequency of all letters.
+        # Then slide the window to the size of the string and update that strings hashmap. Before we slide, compare the hashmaps.
+        # The amount of matching keys is equal to the counter. If the counter == 26, we have a match
