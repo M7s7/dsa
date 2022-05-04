@@ -33,7 +33,7 @@ def findDisappearedNumbers(self, nums):
 # MARKING INDICES. We can mark indices as negative if a number should exist there. Then we can go through the array and return the numbers that should be on the positive valued indices.
 # Time complexity: O(N) // Space complexity: O(1)
 
-def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+def findDisappearedNumbers(self, nums):
     missingNo = []        
 
     for value in nums:
