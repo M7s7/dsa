@@ -15,31 +15,31 @@ class Solution:
         # Create loop to iterate through each character. Continue with the loop when at least one of the strings has not been fully iterated through yet
         while s_p >=0 or t_p >= 0:
             # Find the index of the next valid character for both strings (after backspaces are applied)
-            s_char = valid_char(s, s_p)
-            t_char = valid_char(t, t_p)
+            s_index = modify_index(s, s_p)
+            t_index = modify_index(t, t_p)
             
             # Now, we can COMPARE THE TWO VALID CHARS TOGETHER. 
             # Condition - if both indexes are less than 0, both strings have been fully compared at the same time without triggering a False return. Thus, they are a match. 
-            if s_char < 0 and t_char < 0:
+            if s_index < 0 and t_index < 0:
                 return True
             
             # Condition - if only one string has been iterated through (note that the condition above has not been triggered if this condition is reached), then one string has been fully iterated through while the other has not. Thus, they do not match. 
-            if s_char < 0 or t_char < 0:
+            if s_index < 0 or t_index < 0:
                 return False
             
             # Condition - now, directly comparing the characters - if they don't match, return false. 
-            if s[s_char] != t[t_char]:
+            if s[s_index] != t[t_index]:
                 return False
             
             # After validly comparing two characters, we increment to the next character. (Remember, if we increment the pointers to invalid characters, the valid_char function will place them on valid characters).
-            s_p = s_char - 1
-            t_p = t_char - 1
+            s_p = s_index - 1
+            t_p = t_index - 1
         # If the while loop is broken (eg. we finish comparing matching letters both indexed on 0), then both strings have been fully compared. Thus, return True. 
         return True
     
 
 # This function checks if the index is on a backspace. If so, we count how many backspaces there are and increment the pointers accordingly
-def valid_char(string, index):
+def modify_index(string, index):
     # Initiate counter number of consecutive backspaces
     backspace = 0
     # Initiate while loop, searching indexes. Loop stops at index = 0 because there is no character at -1.  
