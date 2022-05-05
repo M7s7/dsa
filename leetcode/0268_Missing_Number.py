@@ -67,17 +67,17 @@ def missingNumber(self, nums):
 # 4: GAUSSIAN SUM. Given a list of consecutive natural numbers (1, 2, 3, ... n - 1, n) we can determine the sum by the Gaussian sum formula: n * (n + 1) / 2
     # Thus, we can sum our expected range (1 to n) and then subtract our truncated nums list. Then, we will find our missing number. 
 
-    def missingNumber(self, nums: List[int]) -> int:
-        # Between 0 and n, there should be n natural numbers (as 0 is not a natural number). This will be the same size as len(nums) (as although nums is missing a number, it has a 0 in it, adding an extra length)
-        # Use Gaussian sum to find sum of array
-        n = len(nums)
-        
-        gSum = n * (n + 1) // 2
-        
-        for num in nums: 
-            gSum -= num
-        
-        return gSum
+def missingNumber(self, nums: List[int]) -> int:
+    # Between 0 and n, there should be n natural numbers (as 0 is not a natural number). This will be the same size as len(nums) (as although nums is missing a number, it has a 0 in it, adding an extra length)
+    # Use Gaussian sum to find sum of array
+    n = len(nums)
+    
+    gSum = n * (n + 1) // 2
+    
+    for num in nums: 
+        gSum -= num
+    
+    return gSum
 
 
 # UNFINISHED: There are several other solutions with similar time and space complexity
