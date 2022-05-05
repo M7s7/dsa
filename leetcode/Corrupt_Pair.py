@@ -48,3 +48,10 @@ def find_corrupt_numbers(nums):
 
 main()
 
+
+# Other options include: 
+    # SORTING normally (time and space O(nlogN)). 
+    # Using a count array from 1 to N to store how many times each number has been stored. Return the indices that have 0 and 2 counts (Time O(N) // Space O(N))
+    # Using negative marking/ hashing - mark indices which have been visited as negative. If we encounter an already negative indice when marking, that is the duplicate. The index of the positive number is the missing one. 
+        # Time O(N) // space(O1)
+    # XOR (unsure how to get this working): Time O(N) // space(O1)
