@@ -9,6 +9,7 @@
     # The kth pointer - this node should travel k steps from the groupPrev node to reach the kth node. This node is used in several ways:
         # As a conditional to stop the reversing of the list - once this node is reached, we should stop reversing
         # After reversal, the kth pointer becomes the NEW START OF THE CURRENT GROUP. Thus, we want to link GROUPPREV.NEXT to the KTH POINTER. 
+    # Time Complexity: O(N) // Space Complexity: O(1)
 
 def reverseKGroup(self, head, k):
     # Need a node to point to the 'new' head node after the initial reversal
