@@ -2,6 +2,12 @@
 
 # Very similar to "102 - Binary Tree - Level Order Reversal". Only difference is that that the output/result is in reversed order. 
 
+# GENERAL:
+    # Time Complexity: O(N) // Space Complexity: O(N)
+        # Approach 1.5 (ans 'stack', appending levels to the left) is probably the most time/space efficient solution
+        # Appending with a stack is a O(1) time operation (remember that inserting in an ARRAY is an O(N) operation instead)
+        # Reversing the list - this takes O(N) additional time
+
 import collections
 
 # Approach 1: STACK 1 - Storing everything in a seperate stack, then appending it at the end to the answers list
@@ -35,7 +41,7 @@ def levelOrderBottom(self, root):
 
     return ans
 
-# Approach 1.5: STACK 2 - The answers list itself is deque, and we can 'PUSH' elements on the top of it
+# OPTIMAL? # Approach 1.5: STACK 2 - The answers list itself is deque, and we can 'PUSH' elements on the top of it. THIS MIGHT BE THE OPTIMAL SOLUTION.
 def levelOrderBottom(self, root):
     queue = collections.deque()
     queue.append(root)
