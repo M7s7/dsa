@@ -26,7 +26,33 @@ def largestValues(self, root):
                 queue.append(node.right)
         
         # If there are no valid nodes (eg. If the level only has Nones), do not append the max. Otherwise, append
+        # This also deals with the empty tree edge case
         if biggest != -inf:
+            ans.append(biggest)
+        
+    return ans
+
+
+# Similar BFS approach
+def largestValues(self, root):
+    queue = collections.deque()
+    queue.append(root)
+    
+    ans = []
+    
+    while queue:
+        biggest = -inf
+        level_size = len(queue)
+        
+        for _ in range(level_size):
+            node = queue.popleft()
+            if node:
+                biggest = max(biggest, node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+        if -inf != biggest:
             ans.append(biggest)
         
     return ans
