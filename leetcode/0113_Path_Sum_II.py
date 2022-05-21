@@ -36,7 +36,7 @@ def pathSum(self, root, targetSum):
 
 # Approach: recursive DFS, by CREATING NEW PATHS
     # Less efficient, as creating new paths are costly operations. However, no need to backtrack. 
-    # Time Complexity: O(N^2) at worst. O(N) for the DFS * O(N) to copy the list of node values // Space Complexity: O(N) for height (excluding the answer output)
+    # Theoretically, this solution has worse space and time complexity (though unsure how much)
 def pathSum(self, root, targetSum):
     def dfs(node, currentSum, path):
     if not node:
