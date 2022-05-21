@@ -2,6 +2,7 @@
 # The answer should be returned as a list of strings, with an arrow seperating each value. 
 
 # Recursive DFS approach, using string concatenation:
+    # Time Complexity: O(N) // Space Complexity: O(N) (height of tree)
 def binaryTreePaths(self, root):
     def dfs(node, path):
         # Handles empty root, also handles if only left or right node exists
