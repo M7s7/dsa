@@ -1,9 +1,10 @@
-# Right Node always - BFS
+# Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
 
-# Approach - scan every level and store in queue. 
+# Approach - scan every level and store in queue. Trick is to PEEK AT THE RIGHT VALUE of the level. 
+    # Time Complexity: O(N) // Space Complexity: O(N)
 import collections
 
-def right(self, root):
+def rightSideView(self, root):
     # Base case handling: If no root, return
     if not root:
         return root
@@ -16,11 +17,11 @@ def right(self, root):
 
     # Loop through queue until we have traversed every node
     while queue:
-        # Peek at right side of queue - append to the answers
-        ans.append(queue[-1])
+        # Peek at right node value of queue - append to the answers
+        ans.append(queue[-1].val)
 
         # Obtain length of queue
-        qLen = length(queue)
+        qLen = len(queue)
 
         # Iterate through level, adding left/right nodes
         for _ in range(qLen):
@@ -29,6 +30,5 @@ def right(self, root):
                 queue.append(node.left)
             if node.right:
                 queue.append(node.right)
-            
 
     return ans
