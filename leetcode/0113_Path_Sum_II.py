@@ -39,23 +39,23 @@ def pathSum(self, root, targetSum):
     # Theoretically, this solution has worse space and time complexity (though unsure how much)
 def pathSum(self, root, targetSum):
     def dfs(node, currentSum, path):
-    if not node:
-        return None
-    
-    # Add new node to the path, and add to running total
-    currentSum += node.val
-    
-    # Base case - leaf node (because root-to-leaf paths)
-    if not node.left and not node.right:
-        if currentSum == targetSum:
-            # New path is created and appended, and the old reference path is not modified. 
-            ans.append(path + [node.val])
-    
-    # Recursive Case
-    else:
-        dfs(node.left, currentSum, path + [node.val])
-        dfs(node.right, currentSum, path + [node.val])
-    
-    ans = []
-    dfs(root, 0, [])
-    return ans
+        if not node:
+            return None
+        
+        # Add new node to the path, and add to running total
+        currentSum += node.val
+        
+        # Base case - leaf node (because root-to-leaf paths)
+        if not node.left and not node.right:
+            if currentSum == targetSum:
+                # New path is created and appended, and the old reference path is not modified. 
+                ans.append(path + [node.val])
+        
+        # Recursive Case
+        else:
+            dfs(node.left, currentSum, path + [node.val])
+            dfs(node.right, currentSum, path + [node.val])
+        
+        ans = []
+        dfs(root, 0, [])
+        return ans
