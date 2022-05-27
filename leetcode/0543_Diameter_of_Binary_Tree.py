@@ -7,7 +7,7 @@
     # 2: Determine the local maximum diameter
     # Time Complexity: O(N), touching each node once // Space Complexity: O(N) for recursive stack
 class Solution:
-    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+    def diameterOfBinaryTree(self, root) -> int:
         # Class level variable
         self.diameter = 0
         
@@ -36,22 +36,22 @@ class Solution:
     # This approach is exactly the same, except we accurately return the 'height' of each node 
     # Note that the longest path of a given node is the 'height' of the node from the 
 class Solution:
-def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-    self.diameter = 0
-    
-    def dfs(node):
-        # The height of an empty tree is -1; the height of a single node is 0. 
-        if not node:
-            return -1
+    def diameterOfBinaryTree(self, root) -> int:
+        self.diameter = 0
         
-        longestLeft = dfs(node.left)
-        longestRight = dfs(node.right)
+        def dfs(node):
+            # The height of an empty tree is -1; the height of a single node is 0. 
+            if not node:
+                return -1
+            
+            longestLeft = dfs(node.left)
+            longestRight = dfs(node.right)
+            
+            # Add the two heights of the longest children paths. +2 for the left and right path from the current node. 
+            self.diameter = max(self.diameter, longestLeft + longestRight + 2)
+            
+            return 1 + max(longestLeft, longestRight)
         
-        # Add the two heights of the longest children paths. +2 for the left and right path from the current node. 
-        self.diameter = max(self.diameter, longestLeft + longestRight + 2)
+        dfs(root)
         
-        return 1 + max(longestLeft, longestRight)
-    
-    dfs(root)
-    
-    return self.diameter
+        return self.diameter

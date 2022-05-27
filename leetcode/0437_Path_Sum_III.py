@@ -7,7 +7,7 @@
     # Thus, if we find a current sum that subtracts with one of our old paths to give us the target, we have found a valid path
     # Time Complexity: O(N) given a single traversal// Space Complexity: O(N), N for hashmap + N for recursive call
 class Solution:
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+    def pathSum(self, root, targetSum: int) -> int:
         # Only one dfs needed to be called. 
         def dfs(node, currSum, cache):
             if not node:
@@ -50,7 +50,7 @@ class Solution:
 # Naive Approach: Nested DFS. Two loops of dfs: Outer loop travels to each node. Inner loop traverses all the paths which originate from that node and sums them.
     # Time Complexity: O(N^2) for nested dfs // Space Complexity: O(N) (height of tree) for call stack, up to O(2N) for both recursive stacks
 class Solution:
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+    def pathSum(self, root, targetSum: int) -> int:
         # Declare a global variable that we can reference to within our functions (the variable is an object)
         self.ans = 0
         
