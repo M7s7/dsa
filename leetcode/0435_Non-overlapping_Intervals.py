@@ -2,7 +2,7 @@
 
 # Approach: When iterating through the list of intervals, keep track of the latest non-overlapping endpoint and compare it with the next startpoint. If currStart < prevEnd, we have an overlap.
     # When an overlap is encountered, we want to deal with it immediately. We need to either 'remove' the previous interval or the current interval. 
-    # This can be represented by updating the prevEnd variable to the smaller of the two intervals, which symbolises a removal of the other interval. Since an interval is being removed, we can update the email
+    # This can be represented by updating the prevEnd variable to the smaller of the two intervals, which symbolises a removal of the other interval. Since an interval is being removed, we can update the variable
     # Time Complexity: O(NlogN) for sorting, + N for iteration through list // Space complexity: O(N) for sorting
 class Solution:
     def eraseOverlapIntervals(self, intervals) -> int:
