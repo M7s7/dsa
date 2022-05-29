@@ -25,3 +25,25 @@ def sortedSquares(self, nums: List[int]) -> List[int]:
         # Move the index down 1
         index -= 1
     return square
+
+
+# Alternatively, we can use a deque and keep appending to the start. This is less efficient timewise (apparently) but still O(N)
+import collections
+
+def sortedSquares(self, nums):
+    output = collections.deque()
+    
+    l = 0
+    r = len(nums) - 1
+    i = len(nums) - 1
+    
+    while l <= r:
+        if abs(nums[l]) < abs(nums[r]):
+            output.appendleft(nums[r]**2)
+            r -= 1
+        
+        else: 
+            output.appendleft(nums[l]**2)
+            l += 1
+    
+    return list(output)
