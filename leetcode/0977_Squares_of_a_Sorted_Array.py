@@ -3,7 +3,7 @@
 # Can do this multiple ways, but creating a dummy list instead of list reversal seems the most efficient as it is purely O(N).
 # Time complexity is O(N) // Space complexity is O(N)
 
-def sortedSquares(self, nums: List[int]) -> List[int]:
+def sortedSquares(self, nums):
     # Create left and right pointers
     left = 0
     right = len(nums) - 1

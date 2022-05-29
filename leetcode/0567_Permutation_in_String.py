@@ -5,7 +5,7 @@
 # Time complexity: O(N + M) (both string lengths) // Space complexity: O(min(M, 26))
 def checkInclusion(self, s1, s2):
     # We want a window of the size of the permutation, so get size k
-    k = len(s1)
+    permSize = len(s1)
     # Start pointer (left pointer for window); match is a counter of how many letters are completely matched
     start = 0
     match = 0
@@ -21,17 +21,21 @@ def checkInclusion(self, s1, s2):
     for i, char in enumerate(s2):
         if char in freq:
             freq[char] -= 1
+            
             # If completely matched, we can count 1 for fully matched
             if freq[char] == 0:
                 match += 1
         
         # If window size is too big, we reduce it by removing an element from the left
-        if i >= k:
+        if i >= permSize:
             if s2[start] in freq:
+                leftChar = s2[start]
+
                 # If letter was already fully matched, remove a match counter (as we are removing the char from the left)
-                if freq[s2[start]] == 0:
+                if freq[leftChar] == 0:
                     match -= 1
-                freq[s2[start]] += 1
+                freq[leftChar] += 1
+
             # Remember to shrink the window and move the pointer
             start += 1
         
