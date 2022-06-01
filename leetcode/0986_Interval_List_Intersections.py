@@ -17,8 +17,8 @@ def intervalIntersection(self, A, B):
     # Create a list to store the output
     ans = []
     
-    # Iterate through both of the lists until we get to the end of both of them. 
-    while i < len(A) and j < len(B): # Notice that BOTH lists have to be finished before we stop iterating
+    # Iterate through both of the lists until we get to the end of one of them
+    while i < len(A) and j < len(B): # Notice that we only have to get to the end of one list. Once one list is completed, there are no more intersections
         
         # To make the code neater, we will express our start and end pointers for the current intervals here
         start_A, end_A = A[i]
