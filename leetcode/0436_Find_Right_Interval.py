@@ -7,6 +7,8 @@
     # Then, go through the values in the ends heap one at a time. To find the right interval, we need to find the smallest startValue that is still larger than the endValue. 
     # Once this value is found, we can store the values in an output array that we initiate earlier. 
     # If no value is found, do not modify the output array, since our output array will be initiated with all -1s. 
+        # Time Complexity: O(N log N) - logN for each heappush, done N times. We also have N for the matching below.
+        # Space Complexity: O(N) or 2*N because of 2 heaps
 
 import heapq
 
@@ -14,7 +16,7 @@ class Solution:
     def findRightInterval(self, intervals: List[List[int]]) -> List[int]:
         starts = [] # Max heap
         ends = [] # Also a max heap
-        # Initiate dummy list
+        # Initiate dummy list with -1 placeholders
         nextInterval = [-1 for _ in range(len(intervals))]
         
         # Store intervals as tuples in the heaps
@@ -40,7 +42,7 @@ class Solution:
                     startValue, startIndex = heapq.heappop(starts)
                 
                 # Once we have the smallest right interval, update our results. 
-                nextInterval[endIndex] = startIndex
+                nextInterval[endIndex] = startIndex # Note that if we don't have a right interval, the placeholding '-1' will be not updated. 
             
             # Put the right interval back on the starts heap, just in case it is the right interval for our other intervals.
             heapq.heappush(starts, (startValue, startIndex))
