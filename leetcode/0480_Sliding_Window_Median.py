@@ -3,6 +3,8 @@
 # Return the median array for each window in the original array. 
 
 # Approach: Two heaps (max min) to find median. Trick in this question is to delete elements as they slide out the window, then rebalance.
+    # Time Complexity: O(N * K). We go through all the elements. For each element, we may heappush/pop (logK) and remove an element (K)
+    # Space Complexity: O(K) - heap sizes are only K size.
 import heapq
 class Solution:
     def medianSlidingWindow(self, nums: List[int], k: int) -> List[float]:
@@ -39,14 +41,14 @@ class Solution:
     
     # Helper function - Remove element when it moves outside the window
     def removeElement(self, heap, element):
-        # Find element in heap
+        # Find element in heap - O(K) move
         index = heap.index(element)
         # Overwrite our target deletion element with the element on the end of our heap
         heap[index] = heap[-1]
         # Remove one of the duplicates
         del heap[-1]
-        # Re-heap the value (O(N) operation with heapify)
-        heapq.heapify(heap) # Note: We could instead sift our overwritten element to where it was originally, which is a O(LogN) operation
+        # Re-heap the value (O(K) operation with heapify)
+        heapq.heapify(heap) # Note: We could instead sift our overwritten element to where it was originally, which is a O(LogK) operation
         return heap
 
     
