@@ -36,6 +36,8 @@ class Solution:
     # Go through each number of the array, adding the numbers to a current permutation.
     # Every time you add a number, we want to remove it from the nums list that is used for the next dfs. 
     # Backtracking must be used as the perm variable is shared
+# Time Complexity: O(N * N!) is the amount of recursive calls we make. N! permutations, each permutation has N nodes to call
+# Space Complexity: O(N * N!)
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         all_perms = []
