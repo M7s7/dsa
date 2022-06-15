@@ -2,7 +2,7 @@
 # Note that the letters wrap around. [a, b] with target z - answer would be a.
 
 # Binary Search.   
-    # Upper bound shrinks to mid. Lower bound shrinks past mid. Mid is a 'lower mid'. 
+    # Upper bound shrinks to mid. Lower bound shrinks past mid. Mid is a 'lower mid', ensuring that we do not accidentally index into our out-of-range index at the far right.
     # Our loop will exit when low and high converge. They should converge on the first letter greater than the target - note that moving our low bound EXCLUDES mid. 
         # Time Complexity: O(log N) - binary search modified
         # Space Complexity: O(1)
