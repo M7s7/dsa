@@ -14,8 +14,6 @@ class Solution:
         # When low and high converge, we return
         while low < high:
             mid = low + (high - low)//2
-            
-            # Converts char to number (1-26)
             mid_val = letters[mid]
             
             # Even if our mid value is the same as target, it is still OUTSIDE our searchspace, so move past it. 
