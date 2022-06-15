@@ -84,3 +84,43 @@ def fourSum(nums, target):
     # Now that we have defined the function kSum, we have to call it. Since this is fourSum, we call 4. 0 is the index of i that we start with. Target is given. 
     kSum(4, 0, target)
     return res
+
+
+# My KSum implementation
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        nums.sort()
+        output = []
+        
+        def kSum(k, index, target, temp):
+            # Base Case
+            if k == 2:
+                left = index
+                right = len(nums) - 1
+                
+                while left < right:
+                    twoSum = nums[left] + nums[right]
+                    if twoSum == target:
+                        output.append(temp + [nums[left], nums[right]])
+                        left += 1
+                        while left < right and nums[left] == nums[left - 1]:
+                            left += 1
+                    
+                    elif twoSum < target: 
+                        left += 1
+                    
+                    else:
+                        right -= 1
+                return
+             
+        # Recursive case
+            for i in range(index, len(nums) - 2):
+                if i > index and nums[i] == nums[i - 1]:
+                    continue
+                temp.append(nums[i])
+                kSum(k - 1, i + 1, target - nums[i], temp)
+                # Need backtracking
+                temp.pop()       
+        kSum(4, 0, target, [])
+        
+        return output
