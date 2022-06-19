@@ -2,7 +2,9 @@
 # Monotonically increasing or decreasing means that for any index i in the array arr[i] != arr[i+1].
 
 # Binary search - find last element that is increasing
-    # This element is the largest
+    # This element is the largest in the entire array
+    # Time Complexity: O(log N)
+    # Space Complexity: O(1)
 
 def find_max(nums):
     low, high = 0, len(nums) - 1
