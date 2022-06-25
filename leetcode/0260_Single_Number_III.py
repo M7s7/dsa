@@ -2,7 +2,7 @@
 
 # Bitwise operations - XOR to find A^B. Since the two numbers are distinct, A^B will be non-zero (thus, there will be at least one set bit). We can use this setbit to partition the array and XOR it again. 
     # Time Complexity: O(N) - unsure how long the bitshifting would take 
-    # Space Compl
+    # Space Complexity: O(1) 
 class Solution:
     def singleNumber(self, nums: List[int]) -> List[int]:
         # Find A XOR B
