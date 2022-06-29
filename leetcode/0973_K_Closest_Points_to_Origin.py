@@ -27,3 +27,5 @@ class Solution:
 
 
 # Approach 2: TBC - Quick Select
+
+# Approach 3: Super naive approach - create tuples with distance, then sort and return. NlogN. 
