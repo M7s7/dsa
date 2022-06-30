@@ -47,3 +47,25 @@ class Solution:
             i += 1
         
         return nums[start:start+k]
+
+
+# Priority Queue. This works for non-sorted arrays, but is worse for this question.
+    # Time Complexity: O(nlogk) - nlogk to create final heap, then klogk for sorting. 
+    # Space Complexity: O(k)
+import heapq
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        max_heap = []
+        
+        for num in arr:
+            diff = abs(num - x)
+            
+            if len(max_heap) >= k:
+                if diff < -max_heap[0][0] or diff == max_heap[0][0] and num < max_heap[0][1]:
+                    heapq.heappop(max_heap)
+                    heapq.heappush(max_heap, (-diff, num))
+            else:
+                heapq.heappush(max_heap, (-diff, num))
+                
+        max_heap.sort(key = lambda x: x[1])
+        return [i[1] for i in max_heap]
