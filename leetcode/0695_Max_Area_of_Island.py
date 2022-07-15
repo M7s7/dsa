@@ -15,10 +15,12 @@
         max_area = 0
         
         def findLand(i, j):
+            # Check out-of-bounds, or no island, or visited
             if i < 0 or j < 0 or i >= m or j>= n or grid[i][j] == 0:
                 return 0
-            
-            grid[i][j] = 0           
+            # Mark visited as 0
+            grid[i][j] = 0  
+            # Four recursions - get sum of each branch, plus 1 for current land         
             curr_area = 1 + findLand(i + 1, j) + findLand(i - 1, j) + findLand(i, j - 1) + findLand(i, j + 1) 
             return curr_area
         
