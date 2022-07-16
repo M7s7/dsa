@@ -7,7 +7,7 @@
 # Return the weight of the last remaining stone. If there are no stones left, return 0.
 
 
-# Heap solution. Pop off two elements at a time and then compare them to either create a new rock or delet both rocks.
+# Heap solution. Pop off two elements at a time and then compare them to either create a new rock or delete both rocks.
     # Time Complexity: O(NlogN) - heappopping and heappushing all elements (creation of up to N new elements)
     # Space Complexity: O(N) - creation of max heap
 import heapq
