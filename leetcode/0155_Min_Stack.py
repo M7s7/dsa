@@ -15,6 +15,13 @@
 # param_3 = obj.top()
 # param_4 = obj.getMin()
 
+
+# Approach 1: Two Stacks
+    # Every push, we will also push on the current minimum on a different stack. 
+    # Elements are pushed and pop in sync with the two stacks.
+# Time Complexity: O(1) per operation
+# Space Complexity: O(N)
+import collections
 class MinStack:
     def __init__(self):
         self.stack = collections.deque()
@@ -38,6 +45,10 @@ class MinStack:
         return self.min_stack[-1]
 
 
+# Approach 2: Hashmap
+    # Store the minimum at every length of the stack (length as the key), modifying it when needed. 
+# Time Complexity: O(1) per operation
+# Space Complexity: O(N), but worse than two stacks as it never reduces (unless we del keys)
 class MinStack: 
     def __init__(self):
         self.size = 0
