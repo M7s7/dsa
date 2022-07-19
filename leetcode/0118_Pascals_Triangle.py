@@ -2,9 +2,9 @@
 
 
 # Dynamic Programming. Below is the iterative approach (bottom up), which is the most efficient.
-    # Time Complexity: O(N^2), but actually less than that. The complexity is 1 + 2 + 3... + N (for each row)
-    # Space Complexity: O(N^2) - same as above.
-
+    # Remember that for the jth element on the ith row that is not on the edges, the value is the j-1th and jth elements on the i-1th row.
+# Time Complexity: O(N^2), but actually less than that. The complexity is 1 + 2 + 3... + N (for each row)
+# Space Complexity: O(N^2) - same as above.
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
         pascal = []
