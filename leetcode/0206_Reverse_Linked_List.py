@@ -17,8 +17,6 @@ def reverseList(self, head):
     return prev
 
 
-
-
 # RECURSION:
 # Time complexity: O(N) // Space complexity: O(N) due to call stack
 class Solution:
