@@ -4,26 +4,20 @@
 # METHOD 1: Sliding window: Hashmap storing locations
 # This is the optimal solution. Create a hashmap to store every letter's location, and when a duplicate is found, we can directly shrink the window, avoiding that letter.
 # However, make sure that you aren't moving the pointer backwards by taking a MAX. 
-# Time complexity: O(N) // Space complexity: O(min(m, n)) where m is 26 and n is the string length
-def lengthOfLongestSubstring(self, s: str):
-    # Create a hashmap of indices of every letter
-    locations = {}
-    left = 0
-    max_length = 0
-    
-    # Move through the string - using enumerate over range(len) is more pythonic and cleaner
-    for right, char in enumerate(s):
-        # Condition checking if there is a duplicate
-        if char in locations:
-            # We want to update the left pointer to move beyond the duplicate character index, stored in the dictionary
-            # However, for strings like "abba", we do not want the left pointer (if it has already moved because of a duplicate) to go backwards, because we will run into a previous duplicate.
-            left = max(left, locations[char] + 1)
-        # In either case, update the hashmap with a new location
-        locations[char] = right
-        # Return max length
-        windowSize = right - left + 1
-        max_length = max(max_length, windowSize)
-    return max_length
+# Time complexity: O(N)
+# Space complexity: O(min(m, n)) where m is 26 and n is the string length
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        l = 0
+        max_length = 0
+        indices = {}
+        for i, char in enumerate(s): 
+            if char in indices:
+                l = max(l, indices[char] + 1)
+            indices[char] = i       
+            curr_length = i - l + 1
+            max_length = max(max_length, curr_length)
+        return max_length
 
 
 # METHOD 2: Sliding window: Hashmap storing frequency
