@@ -2,48 +2,59 @@
 # A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 
 import collections
-
-# Approach 1: BFS Solution
-    # Time Complexity: O(N) // Space Complexity: O(N)
-
-    # Standard approach - check both nodes for existence
-def maxDepth(self, root):
-    if not root:
-        return 0
-    
-    queue = collections.deque()
-    queue.append(root)
-    level = 0
-    
-    while queue:
-        level += 1
-        level_size = len(queue)
+# Approach 1: BFS Solution - store level variable and return it
+    # Time Complexity: O(N)
+    # Space Complexity: O(N)
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
         
-        for _ in range(level_size):
-            node = queue.popleft()
-            if node.left:
-                queue.append(node.left)
-            if node.right:
-                queue.append(node.right)
-
-    return level
-
-    # Tuple approach to store level
-def maxDepth(self, root):
-    if not root:
-        return 0
-    
-    queue = collections.deque()
-    queue.append([root, 1])
-    max_level = 0
-    
-    while queue:
-        node, level = queue.popleft()
+        queue = collections.deque()
+        queue.append(root)
+        level = 0
         
-        if node:
-            max_level = max(max_level, level)
+        while queue:
+            level += 1
+            level_size = len(queue)
             
-            queue.append([node.left, level+1])
-            queue.append([node.right, level+1])
-    
-    return max_level
+            for _ in range(level_size):
+                node = queue.popleft()
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+        return level
+
+# Alternatively (and preferred) BFS: Tuple approach to store level
+    # Time Complexity: O(N)
+    # Space Complexity: O(N) - max queue size is width of tree (N/2)
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        queue = collections.deque()
+        depth = 1
+        queue.append((root, depth))
+        
+        while queue:
+            level_size = len(queue)
+            for _ in range(level_size):     
+                node, depth = queue.popleft()
+                if node.left:
+                    queue.append((node.left, depth + 1))
+                if node.right:
+                    queue.append((node.right, depth + 1))
+        
+        return depth 
+
+
+# DFS solution - return local depth of each node. 
+    # Time Complexity: O(N)
+    # Space Complexity: O(N) - max depth of the tree (if it is just a linked list)
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
