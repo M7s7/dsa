@@ -2,66 +2,41 @@
 # Reorder the list to be on the following form: L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
 # You may not modify the values in the list's nodes. Only nodes themselves may be changed.
 
-# METHOD 1: FAST AND SLOW POINTERS - FLOYDS ALGO. Then merge in place. 
-# Time complexity: O(N) // Space complexity: O(1)
-def reorderList(self, head):
-    """
-    Do not return anything, modify head in-place instead.
-    """
-    # FIND MIDDLE NODE through Floyd's algo
-    slow = fast = head
-    
-    while fast and fast.next: 
-        fast = fast.next.next
-        slow = slow.next
-    
-    # REVERSE THE LIST for the second part of the list, starting from the middle node (current is middle node)
-    previous, current = None, slow
-    
-    while current: 
-        nxt = current.next
-        current.next = previous
-        previous = current
-        current = nxt
-    
-
-    # MERGE THE LISTS
-    # Make sure we STORE the next element from both lists so we do not orphan the sublists when changing pointers
-    
-    # To simplify, I will create new pointers with more appropriate names
-    reverse = previous # Reverse list nodes. Remember that previous is the last element of the node, as current and nxt are on None. 
-    start = head # Start list nodes
-    middle = slow # The middle node is the slow pointer
-    
-    # Create left and right temporary variables to store next values
-    while start:
-        # Before modifying any variables, check if we are at the end of the list (which is the middle node). When we reach it, point it at NONE
-        if start is middle:
-            start.next = None
-            return
+# METHOD 1: FAST AND SLOW POINTERS/REVERSE LINKED LIST.
+# Time complexity: O(N)
+# Space complexity: O(1)
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        # Find middle node (right biased)
+        fast = slow = head
         
-        left_temp = start.next
-        right_temp = reverse.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # Reverse second half of linked list
+        prev = None # We want to point our middle pointer at nothing (as it is our last node in our final list)
+        curr = end = slow # Slow pointer is sitting on mid pointer
+        while curr != None:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
         
-        start.next = reverse
-        reverse.next = left_temp
-                    
-        start = left_temp
-        reverse = right_temp
-
-
-### NOTE: Here is a more concise implementation of merging the two lists
-        # Merge the two lists
-        start = head
-        end = previous
+        # Join the lists together (we can treat the linked list as two seperate linked lists)
+        curr = head
+        nxt = prev # Prev pointer is on the start of our reversed list (head node of reversed list)
+        while curr != end:
+            temp = curr.next
+            curr.next = nxt
+            curr = nxt
+            nxt = temp
         
-        while start:
-            nxt = start.next
-            start.next = end 
-            start = start.next
-            end = nxt
-
-
+        return head # No need for dummy variable as head does not change
+        
 
 # METHOD 2: USE AN ARRAY
 # We can use an array to store the actual node objects. We can then point towards these
