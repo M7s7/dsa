@@ -10,10 +10,10 @@ class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
         dummy_less = ListNode()
         dummy_more = ListNode()
-        
+        # Pointer to the 'prev' node in the two lists
         less = dummy_less
         more = dummy_more
-        
+        # Partition the lists
         while head:
             if head.val < x:
                 less.next = head
@@ -22,6 +22,7 @@ class Solution:
                 more.next = head
                 more = more.next
             head = head.next
+        # Set 
         more.next = None
         
         # Connect the two lists
