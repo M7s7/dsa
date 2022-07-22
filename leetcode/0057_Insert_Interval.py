@@ -5,39 +5,35 @@
 ## Once an overlap has been found with the newInterval, merge the two together. Continue checking for the next intervals.
 ## Once newInterval has been passed, add it to the list and then the rest of the intervals list. 
 ## If newInterval doesn't get passed, we want to append newIntervals at the end of the list and then return it. 
-## Time complexity: O(N) (one pass solution) // Space complexity: O(N) (we store a new list)
+    # Time complexity: O(N) (one pass solution)
+    # Space complexity: O(N) (we store a new list)
 
-def insert(self, intervals, newInterval):
-    ans = []
- 
-    for i in range(len(intervals)):
-        # Base case - interval end is smaller than newInterval start, then we just add the interval to the list
-        if intervals[i][1] < newInterval[0]:
-            ans.append(intervals[i])
-            continue
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        new_start, new_end = newInterval
+        ans = []
         
-        # If there is an overlap, MERGE the intervals. 
-        # Condition is if current end >= newIntervalStart AND current start <= newIntervalEnd. The first condition is already checked above
-        elif newInterval[1] >= intervals[i][0]:
-            # Merge the intervals together
-            newInterval[0] = min(newInterval[0], intervals[i][0])
-            newInterval[1] = max(newInterval[1], intervals[i][1])
-            # Do not add it to the answer yet, as we may need to merge more intervals
-        
-        # If we have PASSED the new interval, we can attach it and then append the rest of the intervals. 
-        # We can determine passing it if the current START of our interval > newIntervalEnd (newInterval[1] < intervals[i][0])
-        else: 
-            # If we are past the new interval, append everything left
-            ans.append(newInterval)
-            return ans + intervals[i:]
-    
-    # If we don't return in the loop, it means that our newInterval is at the END and thus never got passed. Thus, we need to manually append it.
-    ans.append(newInterval)
-    return ans
+        for i in range(len(intervals)):
+            curr_start, curr_end = intervals[i]
+            # Situation 1: If our remaining intervals are after our new interval, we can append everything and terminate early
+            if curr_start > new_end:
+                ans.append([new_start, new_end])
+                return ans + intervals[i:]
+            # Situation 2: Overlapping interval - Merge our intervals, but do not append yet (as it could still extend further)
+            if curr_end >= new_start:
+                new_start = min(new_start, curr_start)
+                new_end = max(new_end, curr_end)
+            # Situation 3: Interval comes before our new interval - just append it to the list. 
+            else:
+                ans.append(intervals[i])
+        # Exiting the loop means that the merged interval is either the last interval, or has merged with the last interval. Thus, we still need to append it
+        ans.append([new_start, new_end])
+        return ans
 
 
 # METHOD 2: We append the newInterval to the intervals list, then we MERGE IN-PLACE (same as problem 56.)
-## Time complexity: O(nlogn) due to sorting // Space complexity: O(N + N) (storing a new list plus space for sorting)
+    # Time complexity: O(nlogn) due to sorting
+    # Space complexity: O(N + N) (storing a new list plus space for sorting)
 def insert(self, intervals, newInterval):
     # Append the new interval to the list
     intervals.append(newInterval)
