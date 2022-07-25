@@ -5,6 +5,8 @@
 
 
 # APPROACH: USE A STACK to keep elements in left to right order. 
+    # Time Complexity: O(N) one pass
+    # Space Complexity: O(N) but actually something like 1/2N because operators are some of the values
 # Cleaner solution using anonymous functions. Operations are mapped in a hashmap
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
